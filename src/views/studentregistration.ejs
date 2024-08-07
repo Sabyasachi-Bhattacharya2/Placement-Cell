@@ -1,0 +1,113 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 2.4em;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1em;
+    }
+
+    .form-group input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .btn-submit {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .btn-submit:hover {
+        background-color: #218838;
+    }
+
+    .welcome-message {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2em;
+        color: #333;
+    }
+</style>
+
+<h1>Register Students</h1>
+<body>
+    <div class="container">
+        <h1>Please Enter Details and Press Register</h1>
+        <form action="/student/register" method="post" id="registerForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="rollNo">Roll No</label>
+                <input type="text" id="rollNo" name="rollNo" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" required>
+            </div>
+            <div style="text-align: right;">
+                <button type="submit" class="btn-submit">Register</button>
+            </div>
+            <input type="hidden" id="successfulRegister" value="<%=success%>">
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationSucess = document.getElementById('successfulRegister');
+            const flag = registrationSucess.value;
+            if(flag == 'true') {
+                alert("You registered successfully!!!");
+                
+            }
+        });
+    </script>
+</body>
+
+</html>

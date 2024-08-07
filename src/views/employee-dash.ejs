@@ -1,0 +1,78 @@
+<h1 class="welcome-heading">
+    Welcome employee
+</h1>
+
+<div class="container">
+    <div class='card'>
+        <a href="/employee/company-list" style="text-decoration: inherit;">
+            <i class="fa-solid fa-building"></i>
+            <h3>Company List</h3>
+        </a>
+    </div>
+    <div class='card'>
+        <a href="/employee/student-list" style="text-decoration: inherit;">
+            <i class="fa-solid fa-children"></i>
+            <h3>Student List</h3>
+        </a>
+    </div>
+</div>
+
+
+<style>
+    .container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+    }
+
+    .card {
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        text-align: center;
+        margin: 8px;
+        padding: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card i {
+        font-size: 3rem;
+        display: block;
+        color: #007bff;
+    }
+
+    .card h3 {
+        margin: 0;
+        color: #333;
+    }
+
+    .card:hover {
+        transform: translateY(20px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:nth-child(1) {
+        background: #e9f7fc;
+        border-left: 5px solid #007bff;
+    }
+
+    .card:nth-child(2) {
+        background: #fff3e6;
+        border-left: 5px solid #ff6f61;
+    }
+
+    .welcome-heading {
+        font-family: 'Arial', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ee710a;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-bottom: 2px solid #ec0202;
+        display: inline-block;
+    }
+</style>

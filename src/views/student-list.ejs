@@ -1,0 +1,62 @@
+<h3>List of the students</h3>
+<div>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 18px; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 12px; border: 1px solid #ddd;">Student Name</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">Companies Applied</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student=> { %>
+                <tr>
+                    <td style="padding: 12px; border: 1px solid #ddd;">
+                        <%= student.name %>
+                    </td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">
+                        <ul style="margin: 0; padding: 0; list-style-type: none;">
+                            <% student.companiesApplied.forEach(company=> { %>
+                                <li>
+                                    <%= company %>
+                                </li>
+                                <% }); %>
+                        </ul>
+                    </td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">
+                        <button onclick="addCompany('<%= student.name %>')">Add Company</button>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    async function addCompany(studentName) {
+        const newCompany = prompt(`Enter the company name for ${studentName}:`);
+
+        if (newCompany) {
+            try {
+            const response = await fetch('/employee/addcompany', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify({studentName, companyName: newCompany})
+            });
+            console.log('Front end op'+ response.ok);
+            const data = await response.json();
+            if(response.ok) {
+                alert('Company added successfully');
+                window.location.reload();
+            } else {
+                alert(`Error ${data.message}`);
+            }   
+            
+        } catch (err) {
+                console.log(err);
+            }
+    } 
+    }
+</script>
